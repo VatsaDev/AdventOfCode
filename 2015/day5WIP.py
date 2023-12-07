@@ -1008,7 +1008,7 @@ fil2 = []
 nice_strs = []
 
 # first filter
-for line in testS.splitlines():
+for line in inputS.splitlines():
     line_vols = 0
     for i in range(len(line)):
         if line[i]=="a":
@@ -1043,6 +1043,7 @@ for i in range(len(fil2)):
     for j in range(len(fil2[i])-1):
         if fil2[i][j]==fil2[i][j+1]:
             nice_strs.append(fil2[i])
+            continue
 
 print(len(inputS.splitlines()))
 print(len(fil1))
