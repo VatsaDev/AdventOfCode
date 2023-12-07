@@ -999,7 +999,7 @@ mfifrjamczjncuym
 otmgvsykuuxrluky
 oiuroieurpyejuvm"""
 
-testS="haegwjzuvuyypxyu"
+testS="jchzalrnumimnmhp"
 
 vowels = ["a","e","i","o","u"]
 
@@ -1008,10 +1008,18 @@ fil2 = []
 nice_strs = []
 
 # first filter
-for line in inputS.splitlines():
+for line in testS.splitlines():
     line_vols = 0
     for i in range(len(line)):
-        if line[i]=="a" or line[i]=="e" or line[i]=="i" or line[i]=="o" or line[i]=="u":
+        if line[i]=="a":
+            line_vols += 1
+        if line[i]=="e":
+            line_vols += 1
+        if line[i]=="i":
+            line_vols += 1
+        if line[i]=="o":
+            line_vols += 1
+        if line[i]=="u":
             line_vols += 1
     
     if line_vols >= 3:
@@ -1032,9 +1040,9 @@ for i in range(len(fil1)):
 # third filter
 for i in range(len(fil2)):
     
-    for i in range(len(fil2[i])):
-        continue
-    nice_strs.append(fil2[i])
+    for j in range(len(fil2[i])-1):
+        if fil2[i][j]==fil2[i][j+1]:
+            nice_strs.append(fil2[i])
 
 print(len(inputS.splitlines()))
 print(len(fil1))
