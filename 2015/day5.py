@@ -1048,20 +1048,25 @@ print("first", len(set(nice_strs)))
 
 # PART 2
 
-testS="ieodomkazucvgmuy"
+testS="aaa"
 
 fil1 = []
 fil2 = []
 nice_strs = []
 
 # first filter
-for line in testS.splitlines():
+for line in inputS.splitlines():
    for i in range(len(line)-2):
         if line[i]==line[i+2]:
             fil1.append(line)
             continue 
 
-for i in range(len(fil1)): # check for two independant sets of letters
-    pass
+alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-print(nice_strs)
+for i in range(len(fil1)): # check for two independant sets of letters
+    for j in range(len(alphabet)):
+        for k in range(len(alphabet)):
+            if fil1[i].count(alphabet[j]+alphabet[k]) >= 2:
+                nice_strs.append(fil1[i])
+
+print(len(set(nice_strs)))
