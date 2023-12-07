@@ -1029,6 +1029,13 @@ for i in range(len(fil1)):
         continue
     fil2.append(fil1[i])
 
+# third filter
+for i in range(len(fil2)):
+    
+    for i in range(len(fil2[i])):
+        continue
+    nice_strs.append(fil2[i])
+
 print(len(inputS.splitlines()))
 print(len(fil1))
 print(len(fil2))
