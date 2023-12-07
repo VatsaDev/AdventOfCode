@@ -999,9 +999,9 @@ mfifrjamczjncuym
 otmgvsykuuxrluky
 oiuroieurpyejuvm"""
 
-testS="jchzalrnumimnmhp"
+testS="aaa"
 
-vowels = ["a","e","i","o","u"]
+# PART 1
 
 fil1 = []
 fil2 = []
@@ -1039,13 +1039,29 @@ for i in range(len(fil1)):
 
 # third filter
 for i in range(len(fil2)):
-    
     for j in range(len(fil2[i])-1):
         if fil2[i][j]==fil2[i][j+1]:
             nice_strs.append(fil2[i])
             continue
 
-print(len(inputS.splitlines()))
-print(len(fil1))
-print(len(fil2))
-print(len(nice_strs))
+print("first", len(set(nice_strs)))
+
+# PART 2
+
+testS="ieodomkazucvgmuy"
+
+fil1 = []
+fil2 = []
+nice_strs = []
+
+# first filter
+for line in testS.splitlines():
+   for i in range(len(line)-2):
+        if line[i]==line[i+2]:
+            fil1.append(line)
+            continue 
+
+for i in range(len(fil1)): # check for two independant sets of letters
+    pass
+
+print(nice_strs)
