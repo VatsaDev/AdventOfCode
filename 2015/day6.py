@@ -309,18 +309,58 @@ for i in range(999):
         row.append(0)
     grid.append(row)    
 
-#print(grid)
+def has_numbers(inputString):
+    return any(char.isdigit() for char in inputString)
+
+def graphC():
+    lightOn = 0
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            if grid[i][j] == 0:
+                lightOn += 0
+            if grid[i][j] == 1:
+                lightOn += 1
+    
+    return(lightOn)
+
+def changeL(ins, c1, c2):
+    x1 = int(c1[0])
+    x2 = int(c2[0])
+    y1 = int(c1[1])
+    y2 = int(c2[1])
+
+    if ins=="on":
+        for i in range(x1, x2):
+            for j in range(y1, y2):
+                grid[j][i] = 1
+    if ins=="off":
+        for i in range(x1, x2):
+            for j in range(y1, y2):
+                grid[j][i] = 0
+    if ins=="toggle":
+        for i in range(x2-x1+1):
+            for j in range(y2-y1+1):
+                if grid[j][i] == 1:
+                    grid[j][i] = 0
+                if grid[j][i] == 0:
+                    grid[j][i] = 1
 
 for line in testS.splitlines():
+    coords = []
     line = line.split()
-    print(line)
+    print("l",line)
     if "on" in line:
         ins = "on"
     if "off" in line:
         ins = "off"
     if "toggle" in line:
         ins = "toggle"  
+    
+    for i in range(len(line)):
+        if has_numbers(line[i]):
+            parts = line[i].split(',')
+            coords.append(parts)
+    
+    changeL(ins, coords[0], coords[1])
+    print(graphC())
 
-    if any(char.isdigit() for char in line[i]):
-        parts = line[i].split(',')
-        print(parts)
