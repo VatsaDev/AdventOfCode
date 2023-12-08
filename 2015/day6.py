@@ -299,13 +299,18 @@ turn on 550,460 through 964,782
 turn on 31,760 through 655,892
 toggle 628,958 through 811,992"""
 
-testS = "turn on 0,0 through 999,999"
+testS = """turn on 0,0 through 999,999
+toggle 0,0 through 999,0
+turn off 499,499 through 500,500
+turn on 455,455 through 500,500
+toggle 0,0 through 999,0
+"""
 
 grid = []
 
-for i in range(999):
+for i in range(1000):
     row = []
-    for j in range(999):
+    for j in range(1000):
         row.append(0)
     grid.append(row)    
 
@@ -330,20 +335,24 @@ def changeL(ins, c1, c2):
     y2 = int(c2[1])
 
     if ins=="on":
-        for i in range(x1, x2):
-            for j in range(y1, y2):
+        for i in range(x1, x2+1):
+            for j in range(y1, y2+1):
                 grid[j][i] = 1
     if ins=="off":
-        for i in range(x1, x2):
-            for j in range(y1, y2):
+        for i in range(x1, x2+1):
+            for j in range(y1, y2+1):
                 grid[j][i] = 0
     if ins=="toggle":
         for i in range(x2-x1+1):
             for j in range(y2-y1+1):
                 if grid[j][i] == 1:
                     grid[j][i] = 0
+                    continue
                 if grid[j][i] == 0:
                     grid[j][i] = 1
+                    continue
+
+print(graphC())
 
 for line in testS.splitlines():
     coords = []
@@ -362,5 +371,6 @@ for line in testS.splitlines():
             coords.append(parts)
     
     changeL(ins, coords[0], coords[1])
+    #print(ins, coords[0], coords[1])
     print(graphC())
 
